@@ -1,0 +1,58 @@
+{"travelBlogData" : [
+    {
+    "title": "Adventures in Paris",
+    "content": "Exploring the beautiful streets of Paris...",
+    "images": ["https://happytowander.com/wp-content/uploads/Must-sees-in-Paris-Happy-to-Wander-1-2-681x1024.jpg","https://media.tacdn.com/media/attractions-splice-spp-400x400/0b/ec/4b/fd.jpg"],
+    "location": {
+    "type": "Point",
+   "coordinates": [2.3522, 48.8566] 
+   },
+    "public": true,
+   "comments": []
+   },
+   {
+    "title": "Exploring Rome",
+    "content": "Discovering the historic streets of Rome...",
+    "images": ["https://media.tacdn.com/media/attractions-splice-spp-674x446/0a/8c/67/71.jpg", "https://loveincorporated.blob.core.windows.net/contentimages/main/f377944b-9626-442d-97e3-cb9e026c6794-colosseum-prochasson-frederic.jpg"],
+    "location": {
+    "type": "Point",
+    "coordinates": [12.4964, 41.9028]
+    },
+    "public": true,
+    "comments": []
+   },
+   {
+    "title": "Adventures in Bali",
+    "content": "Experiencing the beauty and culture of Bali...",
+    "images": ["https://static.thehoneycombers.com/wp-content/uploads/sites/4/2019/05/KelingKing-Beach-Nusa-Penida-Bali-Indonesia.jpg", "https://pravasaadventure.com/wp-content/uploads/2022/05/DSC067922-scaled.jpg"],
+    "location": {
+    "type": "Point",
+    "coordinates": [115.1628, -8.3405] 
+    },
+    "public": true,
+    "comments": []
+   },
+   {
+    "title": "Goa Getaway",
+    "content": "Enjoying the beautiful beaches and culture of Goa...",
+    "images": ["https://i0.wp.com/buddymantra.com/wp-content/uploads/2016/10/Goa-Beaches2.jpg", "https://res.cloudinary.com/chasset/f_webp/hbimages/activities/1644248138405-Water-Jet-Flyboarding-Goa-India-2022-Image-1.jpg"],
+    "location": {
+    "type": "Point",
+    "coordinates": [73.7437, 15.2993] 
+    },
+    "public": true,
+    "comments": []
+   },
+   {
+    "title": "Journey to the Taj Mahal",
+    "content": "Marveling at the beauty of the Taj Mahal in Agra...",
+    "images": ["https://media.tacdn.com/media/attractions-splice-spp-674x446/07/36/9d/31.jpg"],
+    "location": {
+    "type": "Point",
+   "coordinates": [78.0422, 27.1751] 
+    },
+    "public": true,
+    "comments": []
+   }
+   ]
+}
