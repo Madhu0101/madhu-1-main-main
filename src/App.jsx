@@ -4,6 +4,7 @@ import { AddBlogs } from "./AddBlogs";
 import  { useState, useEffect } from 'react';
 
 import "./App.css";
+import { TravelBlogCard } from "./TravelBlogCard";
 export default function App() {
   return (
 
@@ -79,23 +80,27 @@ function TravelBlogs() {
     <div className="travel-blogs">
       <h1>Travel Blogs</h1>
       {blogs.map((blog, index) => (
-        <div key={index} className="travel-blog-card">
-          <h2>{blog.title}</h2>
-          <div className="images">
-           <img src={blog.images} /> 
-          </div>
-          <p>{blog.content}</p>
-          <p>Location: {blog.location}</p>
-          <p>Public: {blog.ispublic ? 'Yes' : 'No'}</p>
-          <p>Comments: {blog.comments}</p>
-          deleteButton={
+       <TravelBlogCard  
+       key={index}
+       title={blog.title}
+        //  <div className="images">
+        //    <img src={blog.images} /> 
+        //   </div>
+        images={blog.images} 
+        content={blog.content}
+        location= {blog.location}
+        public= {blog.ispublic ? 'Yes' : 'No'}
+        comments= {blog.comments}
+        deleteButton={
             <button onClick={() => deleteBlogs(blog.id)}>Delete Blogs</button>
-          }
-        </div>
+        }
+        />
       ))}
     </div>
   );
 }
+
+
 
 
 
