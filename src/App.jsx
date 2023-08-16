@@ -57,7 +57,23 @@ function TravelBlogs() {
         console.error('Error fetching data:', error);
       });
   }, []);
+  const getBlogs = () => {
+    fetch("https://64cc7dce2eafdcdc8519e155.mockapi.io/movies/", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setBlogs(data));
+  };
+
   
+  const deleteBlogs = (id) => {
+    console.log("Deleting...", id);
+    fetch("https://64c3962067cfdca3b65fef80.mockapi.io/mockdata/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => getBlogs());
+  }
 
   return (
     <div className="travel-blogs">
@@ -72,10 +88,15 @@ function TravelBlogs() {
           <p>Location: {blog.location}</p>
           <p>Public: {blog.ispublic ? 'Yes' : 'No'}</p>
           <p>Comments: {blog.comments}</p>
+          deleteButton={
+            <button onClick={() => deleteBlogs(blog.id)}>Delete Blogs</button>
+          }
         </div>
       ))}
     </div>
   );
 }
+
+
 
 
