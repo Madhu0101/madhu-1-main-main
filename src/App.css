@@ -150,8 +150,6 @@
 .travel-blog-card p {
   margin-bottom: 5px;
 }
-
-/* Style for Links */
 a {
   color: #007bff;
   margin: 0 10px;
@@ -163,7 +161,7 @@ a:hover {
   text-decoration: underline;
 }
 @media (max-width: 768px) {
-  /* Adjust the styles for smaller screens here */
+
   .add-blogs {
     max-width: 100%;
     padding: 10px;
@@ -175,7 +173,7 @@ a:hover {
   }
   
   .travel-blog-card img {
-    padding-top: 30%; /* Adjust as needed for better mobile image display */
+    padding-top: 30%;
   }
   
 }
