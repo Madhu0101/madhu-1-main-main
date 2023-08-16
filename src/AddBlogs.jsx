@@ -143,7 +143,7 @@ export function AddBlogs() {
   });
 
   return (
-    <div className="add-blogs">
+ <div className="add-blogs">
     <h2>Add New Blog</h2>
     <form onSubmit={handleSubmit}>
       <TextField

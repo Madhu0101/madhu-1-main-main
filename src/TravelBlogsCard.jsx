@@ -7,29 +7,33 @@ export function TravelBlogCard({
   content,
   images,
   location,
+  ispublic,
   comments,
+  deleteButton,
+  
 }) {
   const [showContent, setShowContent] = useState(false);
 
   return (
     <div className="travel-blog-card">
-      {/* Display the title */}
+    
       <h2>{title}</h2>
 
       {/* Display images */}
       {images.map((image, index) => (
         <img key={index} src={image} alt={`Image ${index}`} />
       ))}
+      {/* <img src={blog.images} */}
 
       {/* Display summary/content */}
       <button onClick={() => setShowContent(!showContent)}>Toggle Content</button>
       {showContent && <p>{content}</p>}
 
       {/* Display location */}
-      <p>Location: {location.coordinates[0]}, {location.coordinates[1]}</p>
+      <p>Location: {location}</p>
 
       {/* Display public status */}
-      {/* <p>Public: {public ? "Yes" : "No"}</p> */}
+      <p>Public: {ispublic ? "Yes" : "No"}</p>
 
       {/* Display comments */}
       <p> {comments}</p>
@@ -38,6 +42,7 @@ export function TravelBlogCard({
       <IconButton color="primary" aria-label="view details">
         <InfoIcon />
       </IconButton>
+      {deleteButton}
     </div>
   );
 }
