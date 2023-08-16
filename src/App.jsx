@@ -66,13 +66,11 @@ function TravelBlogs() {
         <div key={index} className="travel-blog-card">
           <h2>{blog.title}</h2>
           <div className="images">
-            {blog.images.map((image, imageIndex) => (
-              <img key={imageIndex} src={image} alt={`Image ${imageIndex}`} />
-            ))}
+           <img src={blog.images} /> 
           </div>
           <p>{blog.content}</p>
-          <p>Location: {blog.location.coordinates[1]}, {blog.location.coordinates[0]}</p>
-          <p>Public: {blog.public ? 'Yes' : 'No'}</p>
+          <p>Location: {blog.location}</p>
+          <p>Public: {blog.ispublic ? 'Yes' : 'No'}</p>
           <p>Comments: {blog.comments}</p>
         </div>
       ))}
