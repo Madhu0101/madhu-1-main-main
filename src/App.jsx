@@ -43,6 +43,7 @@ function Home() {
 
 function TravelBlogs() {
   const [blogs, setBlogs] = useState([]);
+ 
 
   useEffect(() => {
     fetch('https://64c3962067cfdca3b65fef80.mockapi.io/mockdata')
@@ -55,14 +56,13 @@ function TravelBlogs() {
       });
   }, []);
   const getBlogs = () => {
-    fetch("https://64cc7dce2eafdcdc8519e155.mockapi.io/movies/", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => setBlogs(data));
-  };
+        fetch("https://64cc7dce2eafdcdc8519e155.mockapi.io/movies/", {
+          method: "GET",
+        })
+          .then((res) => res.json())
+          .then((data) => setBlogs(data));
+      };
 
-  
   const deleteBlogs = (id) => {
     console.log("Deleting...", id);
     fetch("https://64c3962067cfdca3b65fef80.mockapi.io/mockdata/" + id, {
@@ -70,35 +70,30 @@ function TravelBlogs() {
     })
       .then((res) => res.json())
       .then(() => getBlogs());
-  }
-
+  };
   return (
-    <div  className="container">
-    <div  className="title"><h3>Travel Blogs</h3></div>
-    <div className="travel-blogs">
-      
-     
-      {blogs.map((blog, index) => (
-       <TravelBlogCard  
-       key={index}
-       title={blog.title}
-
-        images={blog.images} 
-        content={blog.content}
-        location= {blog.location}
-        public= {blog.ispublic ? 'Yes' : 'No'}
-        comments= {blog.comments}
-        deleteButton={
-            <button onClick={() => deleteBlogs(blog.id)}>Delete Blogs</button>
-        }
-        />
-      ))}
-    </div>
+    <div className="container">
+      <div className="title">
+        <h3>Travel Blogs</h3>
+      </div>
+      <div className="travel-blogs">
+        {blogs.map((blog, index) => (
+          <TravelBlogCard
+            key={index}
+            title={blog.title}
+            images={blog.images}
+            content={blog.content}
+            location={blog.location}
+            public={blog.ispublic ? "Yes" : "No"}
+           
+            comments={blog.comments}
+            deleteButton={
+              <button onClick={() => deleteBlogs(blog.id)}>Delete Blogs</button>
+            }
+            checklistOutput={blog.checklist ? blog.checklist.join(", ") : "No items checked"}
+          />
+        ))}
+      </div>
     </div>
   );
 }
-
-
-
-
-

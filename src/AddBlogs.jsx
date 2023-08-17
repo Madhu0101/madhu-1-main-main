@@ -1,10 +1,8 @@
+
 import * as Yup from "yup";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-
-
-
 export function AddBlogs() {
   const navigate = useNavigate();
   const formValidationSchema = Yup.object().shape({
@@ -14,6 +12,7 @@ export function AddBlogs() {
   location: Yup.string().required().min(2),
   isPublic: Yup.boolean(),
   comments: Yup.string().required("Comment cannot be empty"),
+  checklist: Yup.array().of(Yup.string()), 
 });
 
   const  { handleSubmit, handleChange, handleBlur, values, touched, errors } = 
@@ -25,6 +24,7 @@ export function AddBlogs() {
       location: { type: "Point", coordinates: [] },
       isPublic: "",
       comments: "",
+      checklist: [],
     },
     validationSchema: formValidationSchema,
     onSubmit: (values) => {
@@ -37,6 +37,14 @@ export function AddBlogs() {
       }).then(() => navigate("/blogs"));
     },
   });
+  const handleChecklistChange = (event) => {
+    const updatedChecklist = event.target.checked
+      ? [...values.checklist, event.target.value]
+      : values.checklist.filter((item) => item !== event.target.value);
+    handleChange({
+      target: { name: "checklist", value: updatedChecklist },
+    });
+  };
 
   return (
  <div className="add-blogs">
@@ -108,6 +116,22 @@ export function AddBlogs() {
         required
       />
       {touched.comments && errors.comments ? errors.comments : null}
+      <div className="checklist">
+          <p>Checklist:</p>
+          {["Passport", "Electronic gadgets", "Clothes"].map((item, index) => (
+            <div key={index}>
+              <label>
+                <input
+                  type="checkbox"
+                  value={item}
+                  onChange={handleChecklistChange}
+                  checked={values.checklist.includes(item)}
+                />
+                {item}
+              </label>
+            </div>
+          ))}
+        </div>
 
         <button type="submit">Add Blog</button>
       </form>
