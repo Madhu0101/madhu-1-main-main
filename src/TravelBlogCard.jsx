@@ -1,4 +1,5 @@
 
+
 export function TravelBlogCard({
   title, content, images, location, ispublic, comments, deleteButton,
 
@@ -6,7 +7,6 @@ export function TravelBlogCard({
   
   return (
     <div className="travel-blog-card">
-
       <h2>{title}</h2>
       <img src={images} />
       <p>{content}</p>
@@ -17,3 +17,4 @@ export function TravelBlogCard({
     </div>
   );
 }
+

@@ -1,19 +1,16 @@
 import { Routes, Route, Link } from "react-router-dom";
-// import { useState } from "react";
 import { AddBlogs } from "./AddBlogs";
 import  { useState, useEffect } from 'react';
-
 import "./App.css";
 import { TravelBlogCard } from "./TravelBlogCard";
 export default function App() {
   return (
-
     <div className="app-detail">
-      <h3>Fly beyond the sky and enjoy the world's happiness!</h3>
+      <h2>Fly beyond the sky and enjoy the world's happiness!</h2>
+      <h4>The Travel Blogs</h4>
       <Link to="/">Home</Link>
       <Link to="/blogs">TravelBlogs</Link>
       <Link to="/blogs/add">Add New Blogs</Link>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<TravelBlogs />} />
@@ -22,11 +19,10 @@ export default function App() {
     </div>
   );
 }
-
 function Home() {
   return (
     <div className="title_text">
-      <h2>WELCOME TO THE TRAVEL BLOG!!</h2>
+      <h3>WELCOME TO THE TRAVEL UNIVERSE!!</h3>
       <img src="https://thumbs.dreamstime.com/b/ready-summer-vacation-travel-background-d-rendering-114574299.jpg" alt="travel" />
       <ul></ul>
     </div>
@@ -77,15 +73,16 @@ function TravelBlogs() {
   }
 
   return (
+    <div  className="container">
+    <div  className="title"><h3>Travel Blogs</h3></div>
     <div className="travel-blogs">
-      <h1>Travel Blogs</h1>
+      
+     
       {blogs.map((blog, index) => (
        <TravelBlogCard  
        key={index}
        title={blog.title}
-        //  <div className="images">
-        //    <img src={blog.images} /> 
-        //   </div>
+
         images={blog.images} 
         content={blog.content}
         location= {blog.location}
@@ -97,9 +94,9 @@ function TravelBlogs() {
         />
       ))}
     </div>
+    </div>
   );
 }
-
 
 
 
