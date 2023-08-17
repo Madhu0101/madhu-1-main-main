@@ -1,5 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
 import { AddBlogs } from "./AddBlogs";
+import { useNavigate } from "react-router-dom";
 import  { useState, useEffect } from 'react';
 import "./App.css";
 import { TravelBlogCard } from "./TravelBlogCard";
@@ -41,9 +42,16 @@ function Home() {
 // }
 
 
-function TravelBlogs() {
+function TravelBlogs(title, content, images, location, ispublic, comments,  checklistOutput) {
   const [blogs, setBlogs] = useState([]);
- 
+  const [newtitle, settitle] = useState("title");
+  const [newimages, setimages] = useState("images");
+  const [newcontent, setcontent] = useState("content");
+  const [newlocation, setlocation] = useState("location");
+  const [newpublic, setpublic] = useState("public");
+ const [newcomments,setcomments] = useState("comments");
+ const [newchecklistOutput,setchecklistOutput] = useState("checklistOutput");
+ const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://64c3962067cfdca3b65fef80.mockapi.io/mockdata')
@@ -71,6 +79,25 @@ function TravelBlogs() {
       .then((res) => res.json())
       .then(() => getBlogs());
   };
+
+  const editBlogs = (id) => {
+    fetch("https://64c3962067cfdca3b65fef80.mockapi.io/mockdata/" + id, {
+      method: "PUT",
+      body: JSON.stringify({
+        newtitle,
+        newimages,
+        newcontent,
+        newlocation,
+        newpublic,
+        newcomments,
+        newchecklistOutput,
+      }),
+    })
+      .then((res) => res.json())
+      // .then((data) => setmovie(data))
+      .then(() => navigate("/blogs/" + id))
+      .then(() =>  getBlogs());
+  };
   return (
     <div className="container">
       <div className="title">
@@ -88,7 +115,10 @@ function TravelBlogs() {
            
             comments={blog.comments}
             deleteButton={
-              <button onClick={() => deleteBlogs(blog.id)}>Delete Blogs</button>
+              <button onClick={() => deleteBlogs(blog.id)}>Delete Blog</button>
+            }
+            editButton={
+              <button onClick={() => editBlogs(blog.id)}> Edit Blog </button>
             }
             checklistOutput={blog.checklist ? blog.checklist.join(", ") : "No items checked"}
           />

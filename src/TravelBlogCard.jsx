@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export function TravelBlogCard({
-  title, content, images, location, ispublic, comments,  checklistOutput,deleteButton
+  title, content, images, location, ispublic, comments,  checklistOutput,deleteButton,editButton,
 }) {
   const [checked, setChecked] = useState([]);
   const checkList = ["Passport", "Electronic gadgets", "Clothes"];
@@ -37,6 +37,7 @@ export function TravelBlogCard({
       </div>
       <p>Comments: {comments}</p>
       {deleteButton}
+      {editButton}
     </div>
   );
 }
